@@ -4,7 +4,7 @@
 
 Made with [FastMCP](https://github.com/jlowin/fastmcp)
 
-Requirements: `pip install -r requirements.txt`
+Requirements: `pip install -r requirements.txt` and have Mathematica installed (or at least `wolframscript` callable from terminal).
 
 Run `fastmcp dev path/to/mcp-mma-doc.py` to initialize the server.
 
@@ -23,6 +23,8 @@ Run `fastmcp install path/to/mcp-mma-doc.py` to install to claude or add followi
       ]
     }
 ```
+
+- If you need custom path to `wolframscript`, you can set via changing line 6 in the python file `wolframscript='wolframscript'` to `wolframscript='/path/to/wolframscript'`.
 
 ## Tools
 

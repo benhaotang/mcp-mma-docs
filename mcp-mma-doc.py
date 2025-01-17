@@ -1,7 +1,9 @@
 from fastmcp import FastMCP
 from typing import Optional, List
-from pydantic import BaseModel, Field
+from pydantic import Field
 import subprocess
+
+wolframscript='wolframscript'
 
 # Create the MCP server
 mcp = FastMCP(
@@ -12,7 +14,7 @@ mcp = FastMCP(
 def run_wolframscript(cmd: str) -> str:
     """Run a wolframscript command and return its output"""
     try:
-        full_cmd = ['wolframscript', '-code', cmd]
+        full_cmd = [wolframscript, '-code', cmd]
         
         # Run the command and capture output
         result = subprocess.run(
