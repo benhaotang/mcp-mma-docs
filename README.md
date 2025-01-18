@@ -11,7 +11,7 @@ Run `fastmcp dev path/to/mcp-mma-doc.py` to initialize the server.
 Run `fastmcp install path/to/mcp-mma-doc.py` to install to claude or add following to claude/cline config:
 
 ```json
-"semantic-scholar": {
+"mathematica-docs": {
       "command": "uv",
       "args": [
         "run",
