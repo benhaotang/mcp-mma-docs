@@ -48,7 +48,7 @@ async def get_docs(
     
     Examples:
     - Basic usage: get_docs("Plot")
-    - With package: get_docs("FCFeynmanParametrize", packages=["FeynCalc"])
+    - With package: get_docs("WeightSystem", packages=["LieART"])
     - With addon: get_docs("FCFeynmanParametrize", packages=["FeynCalc"], load_addons=["FeynArts"])
     """
     # Build the Mathematica command
@@ -77,10 +77,10 @@ async def get_docs(
         return f"No documentation found for {symbol}. Make sure the symbol exists and any required packages are specified."
         
     # Format the output
-    markdown = f"# Documentation for `{symbol}`\n **The Doc may contain format related functions like `DisplayForm[...]` or some `*Box[...]` e.g. RowBox, StyleBox, they are NOT relevant for getting the final result and should not be included in your final code!!!**\n\n"
+    markdown = f"# Documentation for `{symbol}`\n\n"
     markdown += "```\n"  # Use code block for preserving formatting
     markdown += result
-    markdown += "\n```\n\n"
+    markdown += "\n```\n\n**Notices for AI assistents: The Doc above may contain format related functions like `DisplayForm[...]` or some `*Box[...]` e.g. RowBox, StyleBox, they are NOT relevant for getting the final result and SHOULD NOT be included in your final code!!! The reason is because Mathematica will automatically render InputForm or StandardForm into this DisplayForm in their frontend, so the users are not suppose to see and use these 'format related functions'. So please ALWAYS FIRST convert the doc from this 'unrendered DisplayForm' format to StandardForm in your mind and always ONLY write your code in StandardForm to user.**\n\n"
     
     # Add loading information if applicable
     if packages or load_addons:

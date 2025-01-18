@@ -4,7 +4,7 @@
 
 Made with [FastMCP](https://github.com/jlowin/fastmcp)
 
-Requirements: `pip install -r requirements.txt` and have Mathematica installed (or at least `wolframscript` callable from terminal).
+Requirements: `pip install -r requirements.txt` and have Mathematica installed (or at least `wolframscript` callable from terminal, e.g. via [free wolfram engine for developers](https://www.wolfram.com/engine/index.php.en)).
 
 Run `fastmcp dev path/to/mcp-mma-doc.py` to initialize the server.
 
@@ -32,7 +32,7 @@ The plugin provides the following commands:
 
 - get_docs: support factory functions, function via an addon, and function via a package.
   - Basic usage: get_docs("Plot")
-  - With package: get_docs("FCFeynmanParametrize", packages=["FeynCalc"])
+  - With package: get_docs("WeightSystem", packages=["LieART"])
   - With addon: get_docs("FCFeynmanParametrize", packages=["FeynCalc"], load_addons=["FeynArts"])
 - list_package_symbols: list all symbols/functions in a package.
   - Basic usage: list_package_symbols("FeynCalc")
