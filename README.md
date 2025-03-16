@@ -2,13 +2,16 @@
 
 ## General & Usage
 
-Made with [FastMCP](https://github.com/jlowin/fastmcp)
+Made with [mcp-python-sdk](https://github.com/modelcontextprotocol/python-sdk)
+
+> [!IMPORTANT]  
+> if you are still using FastMCP version of this mcp server, please consider pull this repo again and update to newer versions as FastMCP is already deprecated.
 
 Requirements: `pip install -r requirements.txt` and have Mathematica installed (or at least `wolframscript` callable from terminal, e.g. via [free wolfram engine for developers](https://www.wolfram.com/engine/index.php.en)).
 
-Run `fastmcp dev path/to/mcp-mma-doc.py` to initialize the server.
+Run `mcp dev path/to/mcp-mma-doc.py` to initialize the server.
 
-Run `fastmcp install path/to/mcp-mma-doc.py` to install to claude or add following to claude/cline config:
+Run `mcp install path/to/mcp-mma-doc.py` to install to claude or add following to claude/cline config:
 
 ```json
 "mathematica-docs": {
@@ -16,13 +19,26 @@ Run `fastmcp install path/to/mcp-mma-doc.py` to install to claude or add followi
       "args": [
         "run",
         "--with",
-        "fastmcp",
-        "fastmcp",
+        "mcp",
+        "mcp",
         "run",
         "/path/to/mcp-mma-doc.py"
       ]
     }
 ```
+
+> [!NOTE]
+> Currently using `uv` with `mcp` seems to break certain Linux/macOS version of Claude-desktop, you might need to set as:
+> ```json
+> "mathematica-docs": {
+>       "command": "/path/to/mcp",
+>       "args": [
+>         "run",
+>         "/path/to/mcp-mma-doc.py"
+>       ]
+>     }
+> ```
+> instead, with `/path/to/mcp` get from running `which mcp` in terminal
 
 - If you need custom path to `wolframscript`, you can set via changing line 6 in the python file `wolframscript='wolframscript'` to `wolframscript='/path/to/wolframscript'`.
 
@@ -39,7 +55,7 @@ The plugin provides the following commands:
 
 ## Known issues
 
-- If you see things like `INFO Processing request of type __init__.py:431 ListToolsRequest` in cline, you can ignore them as this will not affect it from working, this is due to current incomplete impliementation of the function discription and listing support via current usage of FastMCP.
+- If you see things like `INFO Processing request of type __init__.py:431 ListToolsRequest` in cline, you can ignore them as this will not affect it from working, this is because cline parse tool list together with console debug infos, and current python-sdk cannot disable console messages. This will not affect any function calling part other than seeing this warning.
 - Some MMA docs may contain complex styling format, and is not easy to remove with simple regex, your llm may be influenced by this, please instruct it to ignore the styling format and write in InputForm only.
 
 ## Screenshots

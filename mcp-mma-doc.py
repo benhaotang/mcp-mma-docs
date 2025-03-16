@@ -1,4 +1,4 @@
-from fastmcp import FastMCP
+from mcp.server.fastmcp import FastMCP
 from typing import Optional, List
 from pydantic import Field
 import subprocess
