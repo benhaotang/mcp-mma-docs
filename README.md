@@ -38,9 +38,24 @@ Run `mcp install path/to/mcp-mma-doc.py` to install to claude or add following t
 >       ]
 >     }
 > ```
-> instead, with `/path/to/mcp` get from running `which mcp` in terminal
+> instead, with `/path/to/mcp` got from running `which mcp` in terminal
 
-- If you need custom path to `wolframscript`, you can set via changing line 6 in the python file `wolframscript='wolframscript'` to `wolframscript='/path/to/wolframscript'`.
+## Custom wolframscript install path
+
+If you need custom path to `wolframscript`, or it is not in system path, you can set via environmental variable by
+```bash
+export WOLFRAMSCRIPT_PATH="/usr/bin/wolframscript"
+```
+or set as an `env` key in mcp config
+```json
+"mathematica-docs": {
+      "command": ...,
+      "args": ....
+      "env": {
+        "WOLFRAMSCRIPT_PATH": "/usr/bin/wolframscript"
+      }
+    }
+```
 
 ## Tools
 

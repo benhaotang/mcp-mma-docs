@@ -2,8 +2,13 @@ from mcp.server.fastmcp import FastMCP
 from typing import Optional, List
 from pydantic import Field
 import subprocess
+import os
 
-wolframscript='wolframscript'
+# Get wolframscript path from environment variable
+wolframscript = os.environ.get("WOLFRAMSCRIPT_PATH")
+
+if not wolframscript:
+    wolframscript='wolframscript'
 
 # Create the MCP server
 mcp = FastMCP(
